@@ -13,8 +13,8 @@ const Navbar = () => {
   const [menu, setMenu] = useState(false);
   return (
     <Header>
-      <HeaderName prefix="Lorem" href="/">
-        Ipsum
+      <HeaderName prefix="Preact" href="/">
+        Todoist
       </HeaderName>
       <HeaderGlobalBar>
         <HeaderGlobalAction onClick={() => setMenu(!menu)}>
