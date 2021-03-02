@@ -9,6 +9,7 @@ import {
 } from "carbon-components-react";
 
 const Todo = () => {
+  const [wrong, setWrong] = useState(false);
   const [text, setText] = useState("");
   const [todo, setTodo] = useState([]);
   const addText = (e) => {
@@ -17,6 +18,9 @@ const Todo = () => {
   const addTodo = () => {
     if (text !== "") {
       setTodo([...todo, text]);
+      setWrong(false);
+    } else {
+      setWrong(true);
     }
     setText("");
   };
@@ -24,15 +28,21 @@ const Todo = () => {
     <div>
       <div style={{ margin: "auto" }}>
         <TextInput
-          style={{ width: "80%", margin: "auto" }}
+          style={{ margin: "auto" }}
           placeholder="Some text"
           value={text}
           required
+          invalid={wrong}
+          invalidText="This field can't be empty"
           onInput={addText}
         />
-        <br />
         <Button
-          style={{ marginTop: "10px", margin: "auto", display: "flex" }}
+          style={{
+            marginTop: "10px",
+            marginLeft: "auto",
+            marginRight: "auto",
+            display: "flex"
+          }}
           onClick={() => addTodo()}
         >
           Add
