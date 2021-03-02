@@ -1,0 +1,39 @@
+{
+  "presets": [
+    "env",
+    "typescript"
+  ],
+  "plugins": [
+    "syntax-dynamic-import",
+    "transform-object-assign",
+    [
+      "proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+    [
+      "proposal-class-properties",
+      {
+        "loose": true
+      }
+    ],
+    "proposal-object-rest-spread",
+    "babel-plugin-macros",
+    [
+      "transform-react-jsx",
+      {
+        "pragma": "h",
+        "pragmaFrag": "Fragment"
+      }
+    ],
+    [
+      "jsx-pragmatic",
+      {
+        "module": "preact",
+        "export": "h",
+        "import": "h"
+      }
+    ]
+  ]
+}
