@@ -1,10 +1,12 @@
 import { AreaChart } from "@carbon/charts-react";
 import axios from "axios";
+import { h } from "preact";
+import { SkeletonText } from "carbon-components-react";
 import { useCallback, useEffect, useState } from "preact/hooks";
 import "@carbon/charts/styles.css";
 const Graph = ({ Coin }) => {
   const [val, setVal] = useState([]);
-
+  const [loaded, setLoad] = useState(false);
   const GetInfo = useCallback(async () => {
     let coin = Coin.toLowerCase();
     const response = await axios.get(
@@ -20,10 +22,11 @@ const Graph = ({ Coin }) => {
       };
     });
     setVal(res);
+    setLoad(true);
   }, [Coin]);
   useEffect(() => {
     GetInfo();
-  }, [GetInfo]);
+  }, [GetInfo, Coin]);
   let options = {
     title: `${Coin} Pricing`,
     axes: {
@@ -40,6 +43,14 @@ const Graph = ({ Coin }) => {
     curve: "curveNatural",
     height: "400px"
   };
-  return <AreaChart data={val} options={options} />;
+  const Chart = () => {
+    if (loaded) {
+      return <AreaChart data={val} options={options} />;
+    } else {
+      return <SkeletonText paragraph lineCount={20} />;
+    }
+  };
+
+  return <Chart />;
 };
 export default Graph;
