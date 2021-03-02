@@ -7,7 +7,9 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <div style={{ margin: "80px" }}>
+      <div
+        style={{ marginTop: "80px", marginLeft: "20px", marginRight: "20px" }}
+      >
         <Router>
           <Todo path="/" />
           <Graph path="/stats/:Coin" />
