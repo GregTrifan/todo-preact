@@ -1,3 +1,4 @@
+import { h } from "preact";
 import Todo from "./routes/Todo";
 import "carbon-components/css/carbon-components.css";
 import Navbar from "./components/Navbar";
